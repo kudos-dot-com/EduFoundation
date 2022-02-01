@@ -7,15 +7,61 @@ class Auth{
        try{
         const result =await SignupSchema.validateAsync(req.body);
         console.log(result);
+        const user = await signupService.findUser(res,result);
+        if(user){
+            return response(res,"","user with same email or username already exists",403); 
+        }
+        else{
+            try{
+                const newuser = await signupService.createUser(res,result);
+            }
+            catch(err){
+                console.log(err);
+                return response(res,"","error while registering new user",403); 
+            }
+        }
        }
        catch(err){
+            console.log(err);    
             return response(res,"","an error has occured",403);
-           console.log(err);
        }
 
     }
 
-    async login(req,res){}
+    async login(req,res,next){
+        try{
+
+            const result =await LoginSchema.validateAsync(req.body);
+            console.log(result);
+            const verifyEmail = await loginService.verifyEmail(res,result,next);
+            
+            if(verifyEmail)
+            {
+                const Loggeduser = await loginService.compareHash(res,verifyEmail,result);
+                if(Loggeduser)
+                {
+                    const addToken = await loginService.loginUser(res,Loggeduser)
+                }
+
+            }
+            if(user){
+                return response(res,"","user with same email or username already exists",403); 
+            }
+            else{
+                try{
+                    const newuser = await signupService.createUser(res,result);
+                }
+                catch(err){
+                    console.log(err);
+                    return response(res,"","error while registering new user",403); 
+                }
+            }
+           }
+           catch(err){
+                console.log(err);    
+                return response(res,"","an error has occured",403);
+           }
+    }
 }
 
 const authController = new Auth();
