@@ -6,8 +6,14 @@ const cors=require('cors');
 
 app.use(cors())
 app.use(require('express').json());
+
+// db connection
 DbConnect();
 
+// routes
+app.use('/api',require('./api/routes/auth.routes'))
+
+// port
 app.listen(PORT,()=>{
     console.log(`server starting at port ${PORT}`);
 });
