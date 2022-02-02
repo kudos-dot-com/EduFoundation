@@ -7,9 +7,9 @@ function response(res, result, message, code) {
 }
 
 function incompleteField(res) {
-  return res
-    .status(403)
-    .json({ message: "incomplete fields", code: 403, result: null });
+    return res
+      .status(403)
+      .json({ message: "incomplete fields", code: 403, result: null });
 }
 
-module.exports = {response,incompleteField};
+module.exports = { response, incompleteField };

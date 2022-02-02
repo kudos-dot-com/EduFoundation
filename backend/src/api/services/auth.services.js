@@ -1,5 +1,5 @@
 const userModel = require('../models/users')
-const response = require('../helpers/response')
+const {response} = require('../helpers/response')
 const bcrypt= require('bcryptjs');
 const jwt=require('jsonwebtoken');
 const {JWT_SECRET}=require('../../config/config')

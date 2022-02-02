@@ -8,9 +8,6 @@ class Auth{
        try{
         const result =await SignupSchema.validateAsync(req.body);
         console.log(result);
-        if(!result){
-            incompleteField(res);
-        }
         
         const user = await signupService.findUser(res,result);
         if(user){
@@ -34,14 +31,11 @@ class Auth{
     }
 
     async login(req,res,next){
-        try{
 
+        try{
             const result =await LoginSchema.validateAsync(req.body);
             console.log(result);
-            if(!result){
-                incompleteField(res);
-            }
-            
+               
             const verifyEmail = await loginService.verifyEmail(res,result,next);
             
             if(verifyEmail)
@@ -50,19 +44,6 @@ class Auth{
                 if(Loggeduser)
                 {
                     const addToken = await loginService.loginUser(res,Loggeduser)
-                }
-
-            }
-            if(user){
-                return response(res,"","user with same email or username already exists",403); 
-            }
-            else{
-                try{
-                    const newuser = await signupService.createUser(res,result);
-                }
-                catch(err){
-                    console.log(err);
-                    return response(res,"","error while registering new user",403); 
                 }
             }
            }
