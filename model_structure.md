@@ -39,12 +39,13 @@ hints model: -->
     }
     chapter:{
         _id:"string",
-        chapter_name:"string"
+        chapter_name:"string",
+        subject:subject.ObjectId
     },
     subject:{
         _id:"string",
         subject_name:"string",
-        chapters:chapter[]
+        // chapters:chapter[]
     }
     //questions model
     question:{
