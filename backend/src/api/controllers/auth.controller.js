@@ -1,12 +1,17 @@
 const {signupService,loginService} =require('../services/auth.services')
+// validator
 const {SignupSchema,LoginSchema} =require('../validators/user.validator')
-const response = require('../helpers/response')
+const {response,incompleteField} = require('../helpers/response')
 
 class Auth{
     async signup(req,res){
        try{
         const result =await SignupSchema.validateAsync(req.body);
         console.log(result);
+        if(!result){
+            incompleteField(res);
+        }
+        
         const user = await signupService.findUser(res,result);
         if(user){
             return response(res,"","user with same email or username already exists",403); 
@@ -33,6 +38,10 @@ class Auth{
 
             const result =await LoginSchema.validateAsync(req.body);
             console.log(result);
+            if(!result){
+                incompleteField(res);
+            }
+            
             const verifyEmail = await loginService.verifyEmail(res,result,next);
             
             if(verifyEmail)

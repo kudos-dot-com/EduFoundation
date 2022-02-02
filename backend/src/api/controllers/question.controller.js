@@ -1,7 +1,37 @@
-const questionController = require('../controllers/question.controller')
-const router = require('express').Router();
+const questionService = require('../services/question.services');
+const questionValidator = require('../services/question.validator');
+const {response,incompleteField} = require('../helpers/response')
 
-router.post('/signup',authController.signup);
-router.post('/login',authController.login);
 
-module.exports = router
+class Question
+{
+    async addQuestion(req,res)
+    {
+      try{
+        const verifyUser = await questionService.checkUser(req.user);
+        if(!verifyUser)
+        {
+            return response(res,"","your are not authorised",403); 
+        }
+
+        const result = await questionValidator.validateAsync(req.body);
+        console.log(result);
+        if(!result){
+            incompleteField(res);
+        }
+
+        const question = await questionService.addQuestion(req.body);
+        if(question)
+        {
+            return response(res,question,"added question successfully",403);        
+        }
+      }
+      catch(err)
+      {
+        console.log(err);
+        return response(res,"","some error has occured",403); 
+      }
+        
+        
+    }
+}
