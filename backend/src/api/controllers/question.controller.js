@@ -1,5 +1,5 @@
-const questionService = require('../services/question.services');
-const questionValidator = require('../validators/question.validator');
+const {questionService }= require('../services/question.services');
+const {QuestionSchema} = require('../validators/question.validator');
 const {response,incompleteField} = require('../helpers/response')
 
 
@@ -8,13 +8,13 @@ class Question
     async addQuestion(req,res)
     {
       try{
-        const verifyUser = await questionService.checkUser(req.user);
-        if(!verifyUser)
-        {
-            return response(res,"","your are not authorised",403); 
-        }
+        // const verifyUser = await questionService.checkUser(req.user);
+        // if(!verifyUser)
+        // {
+        //     return response(res,"","your are not authorised",403); 
+        // }
 
-        const result = await questionValidator.validateAsync(req.body);
+        const result = await QuestionSchema.validateAsync(req.body);
         console.log(result);
         if(!result){
             incompleteField(res);
