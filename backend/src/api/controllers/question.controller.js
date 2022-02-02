@@ -1,5 +1,5 @@
 const questionService = require('../services/question.services');
-const questionValidator = require('../services/question.validator');
+const questionValidator = require('../validators/question.validator');
 const {response,incompleteField} = require('../helpers/response')
 
 
@@ -35,3 +35,6 @@ class Question
         
     }
 }
+
+const questionController=new Question();
+module.exports=questionController;

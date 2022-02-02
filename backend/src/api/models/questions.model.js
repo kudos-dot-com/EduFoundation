@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-const {ObjectId} = mongoose.Types();
+const {ObjectId} = mongoose.Schema.Types;
 const questionSchema=new mongoose.Schema({
     question:{ type: "string", required: true},
     chapter:{ type: ObjectId, required: true,ref:"chapters"},
@@ -14,4 +14,4 @@ const questionSchema=new mongoose.Schema({
 {timestamps:true}
 )
 
-module.exports = mongoose.model('Question',questionSchema,questions);
+module.exports = mongoose.model('Question',questionSchema,'questions');
