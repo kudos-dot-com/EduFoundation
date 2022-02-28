@@ -1,0 +1,11 @@
+body{
+    background-color:aquamarine;
+}
+#options{
+    display: flex;
+    margin-left: '50px' ;
+}
+
+#company{
+    color: black;
+}
