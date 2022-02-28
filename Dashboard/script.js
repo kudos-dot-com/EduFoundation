@@ -20,3 +20,4 @@ document.getElementById('wbjee').addEventListener('click',() =>{
     var a = document.getElementById('wbjee').textContent
     document.getElementById("dash").textContent=a
 })
+
