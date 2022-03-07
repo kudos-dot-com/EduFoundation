@@ -1,26 +1,26 @@
-const { ExamService } = require('../services/chapter.sevrice')
+const { chapterService } = require('../services/chapter.sevrice')
 // validator
-const { ExamSchema } =require('../validators/chapter.validator')
+const { ChapterSchema } =require('../validators/chapter.validator')
 const {response,incompleteField} = require('../helpers/response')
 
 class chapter{
     async addChapter(req,res){
-        // validator
        try{
-        const result =await ExamSchema.validateAsync(req.body);
+        // validator
+        const result =await ChapterSchema.validateAsync(req.body);
         console.log(result);
         
-        const checkExam = ExamService.checkExam(req.body);
+        const checkChapter = chapterService.checkChapter(req.body);
 
-        const createExam = ExamService.addExam(req.body);
+        const createChapter = chapterService.addChapter(req.body);
 
-        if(createExam){
-            return response(res,createExam,"success creating new exam",200); 
+        if(createChapter){
+            return response(res,createChapter,"success creating new chapter",200); 
         }
        }
        catch(err){
         console.log(err);
-        return response(res,"","error while adding subjects",403); 
+        return response(res,"","error while adding exams",403); 
        }
     }
 }
