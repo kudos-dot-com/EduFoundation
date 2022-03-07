@@ -1,7 +1,7 @@
 const chapterModel = require('../models/subjects.model')
 const subjectModel = require('../models/subjects.model')
 const {response} = require('../helpers/response')
-const createCollection = require('../utils/createCollection');
+const createCollection = require('../utils/createDbCollection');
 
 class chapterServices{
     async checkChapter(res,{name,subject}){

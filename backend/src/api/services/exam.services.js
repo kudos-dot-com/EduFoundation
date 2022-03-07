@@ -1,6 +1,6 @@
 const examModel = require('../models/exams.models')
 const {response} = require('../helpers/response')
-const createCollection = require('../utils/createCollection');
+const createCollection = require('../utils/createDbCollection');
 
 class ExamServices{
     async checkExam(res,{name}){

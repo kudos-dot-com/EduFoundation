@@ -10,7 +10,7 @@ class Subject{
         const result =await SubjectSchema.validateAsync(req.body);
         console.log(result);
 
-        const findSubject = await subjectService.findSubject(req.body);
+        const findSubject = await subjectService.findSubject(res,req.body);
         if(findSubject){
             return response(res,"","subject already exists",403);
         }

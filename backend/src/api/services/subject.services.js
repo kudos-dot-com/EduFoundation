@@ -1,6 +1,6 @@
 const subjectModel = require('../models/subjects.model')
 const {response} = require('../helpers/response')
-const createCollection = require('../utils/createCollection');
+const createCollection = require('../utils/createDbCollection');
 
 class SubjectService
 {
@@ -17,17 +17,17 @@ class SubjectService
         }
     }
     async validateCollectionName({name}){
-        name=name.toLowerCase();
+        name = name.toLowerCase();
         
         if(name.endsWith('s')){
             return name
         }
         else{
-            name+='s';
+            name += 's';
             return name
         }
     }
-    async createSubject(res,{name})
+    async createSubject(res,name)
     {
         try{
             createCollection(name);
