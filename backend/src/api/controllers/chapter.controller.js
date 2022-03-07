@@ -11,8 +11,15 @@ class chapter{
         console.log(result);
         
         const checkChapter = await chapterService.checkChapter(res,req.body);
+        
+        if(checkChapter)
+        {
+            return response(res,"","chapter already exists",403); 
+        }
 
         const createChapter = await chapterService.addChapter(res,req.body);
+
+       
 
         if(createChapter){
             return response(res,createChapter,"success creating new chapter",200); 

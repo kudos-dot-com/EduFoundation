@@ -5,13 +5,10 @@ const createCollection = require('../utils/createDbCollection');
 class ExamServices{
     async checkExam(res,{name}){
     try{
-        const getExam = await ExamModel.findOne({name});
+        const getExam = await examModel.findOne({name});
         
         console.log(getExam);
-        if(getExam)
-        {
-            return response(res,"","exam already exists",403); 
-        }
+        return getExam
     }
     catch(err){
         console.log(err);
@@ -36,5 +33,5 @@ class ExamServices{
         }
         }
 }
-const examService = new ExamServices();
-module.exports = { examService };
+const ExamService = new ExamServices();
+module.exports = { ExamService };

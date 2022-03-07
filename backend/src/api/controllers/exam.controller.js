@@ -10,9 +10,14 @@ class exam{
         const result =await ExamSchema.validateAsync(req.body);
         console.log(result);
         
-        const checkExam = ExamService.checkExam(req.body);
+        const checkExam =await ExamService.checkExam(res,req.body);
 
-        const createExam = ExamService.addExam(req.body);
+        if(checkExam)
+        {
+            return response(res,"","exam already exists",403); 
+        }
+        
+        const createExam =await ExamService.addExam(res,req.body);
 
         if(createExam){
             return response(res,createExam,"success creating new exam",200); 

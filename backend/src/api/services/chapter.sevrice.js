@@ -13,10 +13,8 @@ class chapterServices{
         const getChapter = await chapterModel.findOne({name,subject:getSubject._id});
         
         console.log(getChapter);
-        if(getChapter)
-        {
-            return response(res,"","chapter already exists",403); 
-        }
+        
+        return getChapter;
     }
     catch(err){
         console.log(err);
