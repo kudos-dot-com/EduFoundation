@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-const {ObjectId} = mongoose.Types();
+const {ObjectId} = mongoose.Schema.Types;
 const examSchema=new mongoose.Schema({
     name:{ type: "string", required: true}, 
     subject:{type:ObjectId, required: true,ref:"subjects"},
