@@ -13,6 +13,8 @@ DbConnect();
 // routes
 app.use('/api',require('./api/routes/auth.routes'))
 app.use('/api/question',require('./api/routes/question.routes'))
+app.use('/api/subject',require('./api/routes/subject.routes'))
+
 
 // port
 app.listen(PORT,()=>{

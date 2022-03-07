@@ -70,7 +70,7 @@ class LoginService{
         const token=jwt.sign({_id:user._id},JWT_SECRET)
         const data={token:token,user};
         
-        return response(res,data,"successfully logged in",403); 
+        return response(res,data,"successfully logged in",200); 
     }
 }
 const loginService= new LoginService();
