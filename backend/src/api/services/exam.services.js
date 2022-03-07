@@ -16,12 +16,10 @@ class ExamServices{
     }
     }
 
-    async addExam(res,{name}){
+    async addExam(res,body){
         try{
             
-            const newExam = new examModel({
-                name
-            });
+            const newExam = new examModel( body );
 
             const createExam = await newExam.save();
             
