@@ -1,4 +1,4 @@
-const chapterModel = require('../models/subjects.model')
+const chapterModel = require('../models/chapter.model')
 const subjectModel = require('../models/subjects.model')
 const {response} = require('../helpers/response')
 const createCollection = require('../utils/createDbCollection');
@@ -7,6 +7,9 @@ class chapterServices{
     async checkChapter(res,{name,subject}){
     try{
         const getSubject = await subjectModel.findOne({name:subject});
+        if(!getSubject){
+            return response(res,"","subject does not exists",403); 
+        }
         const getChapter = await chapterModel.findOne({name,subject:getSubject._id});
         
         console.log(getChapter);
@@ -24,7 +27,7 @@ class chapterServices{
     async addChapter(res,{name,subject}){
         try{
             const getSubject = await subjectModel.findOne({name:subject});
-            
+            console.log(getSubject);
             const newChapter = new chapterModel({
                 name,
                 subject:getSubject._id

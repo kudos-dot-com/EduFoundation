@@ -10,9 +10,9 @@ class chapter{
         const result =await ChapterSchema.validateAsync(req.body);
         console.log(result);
         
-        const checkChapter = chapterService.checkChapter(req.body);
+        const checkChapter = await chapterService.checkChapter(res,req.body);
 
-        const createChapter = chapterService.addChapter(req.body);
+        const createChapter = await chapterService.addChapter(res,req.body);
 
         if(createChapter){
             return response(res,createChapter,"success creating new chapter",200); 
