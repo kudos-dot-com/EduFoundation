@@ -40,3 +40,5 @@ class chapterServices{
         }
         }
 }
+const chapterService = new chapterServices();
+module.exports = {chapterService};

@@ -35,7 +35,7 @@ class SubjectService
             const newSubject = new subjectModel({name})
             const createSubject = await newSubject.save()
 
-            return response(res,newUser,"success creating new subject",200); 
+            return createSubject;
         }
         catch(err){
             console.log(err);

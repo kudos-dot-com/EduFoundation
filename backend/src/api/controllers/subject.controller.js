@@ -15,9 +15,14 @@ class Subject{
             return response(res,"","subject already exists",403);
         }
         // validating the collection name 
-        const subjectname =  await subjectService.validateCollectionName(req.body);
+        const subjectname = await subjectService.validateCollectionName(req.body);
  
         const createSubject = await subjectService.createSubject(res,subjectname);
+        
+        if(createSubject){
+            return response(res,createSubject,"success creating new subject",200); 
+        }
+
        }
        catch(err){
             console.log(err);    
