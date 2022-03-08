@@ -4,7 +4,7 @@ const questionSchema=new mongoose.Schema({
     question:{ type: "string", required: true},
     chapter:{ type: ObjectId, required: true,ref:"chapters"},
     subject:{ type: ObjectId, required: true,ref:"subjects"},
-    question_type:{ type: ObjectId, required: true,ref:"questionTypes"},
+    // question_type:{ type: ObjectId, required: true,ref:"questionTypes"},
     exam:{ type: ObjectId, required: true,ref:"exams"},
     answers:{ type: "array", required: true},
     correct_answer:{ type: "string", required: true},

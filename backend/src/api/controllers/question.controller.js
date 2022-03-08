@@ -1,6 +1,9 @@
 const {questionService }= require('../services/question.services');
 const {QuestionSchema} = require('../validators/question.validator');
 const {response,incompleteField} = require('../helpers/response')
+const examModel = require('../models/exams.models')
+const chapterModel = require('../models/chapter.model')
+const subjectModel = require('../models/subjects.model')
 
 
 class Question
@@ -8,19 +11,31 @@ class Question
     async addQuestion(req,res)
     {
       try{
-        // const verifyUser = await questionService.checkUser(req.user);
-        // if(!verifyUser)
-        // {
-        //     return response(res,"","your are not authorised",403); 
-        // }
-
         const result = await QuestionSchema.validateAsync(req.body);
         console.log(result);
-        if(!result){
-            incompleteField(res);
+
+        // sanitizing the code
+        const { chapter,subject,exam } = req.body;
+
+        const getSubject = await subjectModel.findOne({name:subject});
+        
+        if(!getSubject){
+          return response(res,"","subject does not exists",403); 
+        }
+  
+        const getChapter = await chapterModel.findOne({name:chapter,subject:getSubject._id});
+        
+        if(!getChapter){
+          return response(res,"","chapter does not exists",403); 
         }
 
-        const question = await questionService.addQuestion(req.body);
+        const getExam = await examModel.findOne({name:exam});
+        
+        if(!getExam){
+          return response(res,"","exam does not exists",403); 
+        }
+
+        const question = await questionService.addQuestion(res,getSubject,getChapter,getExam,req.body);
         if(question)
         {
             return response(res,question,"added question successfully",403);        
