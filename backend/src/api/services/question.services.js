@@ -8,14 +8,14 @@ class QuestionService {
   async addQuestion(res,getSubject,getChapter,getExam,fields) {
     try{
       const { chapter,subject,exam } = fields;
-
+      var arr = [""] 
       const newquestion = new questionModel({
         ...fields,
         subject:getSubject._id,
         chapter:getChapter._id,
         exam:getExam._id,
       })
-      const question = await questionModel.save(newquestion);
+      const question = await newquestion.save();
       return question;
 
     } catch (err) {
