@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const QuestionSchema = Joi.object({
-    question: Joi.string().min(3).max(30).required(),
+    question: Joi.string().min(3).max(5000).required(),
     chapter: Joi.string().min(3).max(30).required(),
     subject: Joi.string().min(3).max(30).required(),
     question_type: Joi.string().min(3).max(30).required(),

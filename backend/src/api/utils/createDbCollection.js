@@ -1,5 +1,5 @@
-const {MONGO_URI}= require('../../config/config'); 
-const database = 'EduFoundation';
+const {MONGO_URI,DATABASE}= require('../../config/config'); 
+const database = DATABASE;
 var MongoClient = require('mongodb').MongoClient;
  
     function createCollection(name){
