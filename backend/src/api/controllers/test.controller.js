@@ -6,7 +6,7 @@ const chapterModel = require('../models/chapter.model')
 const subjectModel = require('../models/subjects.model')
 
 
-class Question
+class Test
 {
     async addQuestion(req,res)
     {
@@ -52,5 +52,5 @@ class Question
     
 }
 
-const questionController=new Question();
-module.exports=questionController;
+const testController=new Test();
+module.exports = testController;
