@@ -2,7 +2,6 @@ const express = require('express');
 const app=express();
 const {PORT}= require('./config/config');
 const DbConnect =require('./config/database')
-// const RedisConnect =require('./config/redisConfig')
 const cache = require('./api/redis/cacheQuestion')
 const cors=require('cors');
 
@@ -11,7 +10,6 @@ app.use(require('express').json());
 
 // db connection
 DbConnect();
-// RedisConnect();
 // cache.addSubject();
 // routes
 app.use('/api',require('./api/routes/auth.routes'))

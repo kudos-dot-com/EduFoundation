@@ -4,7 +4,8 @@ const {response,incompleteField} = require('../helpers/response')
 const examModel = require('../models/exams.models')
 const chapterModel = require('../models/chapter.model')
 const subjectModel = require('../models/subjects.model')
-
+const cache = require('../redis/cacheQuestion')
+const getcache = require('../redis/getcachedQuestion')
 
 class Question
 {
@@ -37,7 +38,8 @@ class Question
 
         const question = await questionService.addQuestion(res,getSubject,getChapter,getExam,req.body);
         if(question)
-        {
+        {   
+            await cache.addSubject(getSubject.name,question);
             return response(res,question,"added question successfully",403);        
         }
       }
@@ -48,6 +50,28 @@ class Question
       }
         
         
+    }
+    async getQuestion(req,res){
+    
+      const {subject} = req.params;
+      const getCache =  await getcache.getSubjectQuestion(subject);
+      return response(res,getCache,"success fetching all subject",200);   
+    }
+    async getQuestionChapterwise(req,res){
+    
+      const {subject,chapter} = req.params;
+      const question = await questionService.getQuestionChapterwise(res,subject,chapter,req.query);
+      
+      return response(res,question,"fetched question successfully",403);        
+      
+    }
+    async getQuestionExamwise(req,res){
+    
+      const { exam } = req.params;
+      const question = await questionService.getQuestionExamwise(res,exam,req.query);
+      
+      return response(res,question,"fetched question successfully",403);        
+      
     }
     
 }

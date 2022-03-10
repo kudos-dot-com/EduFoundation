@@ -7,9 +7,9 @@ const { REDIS_PORT }= require('../../config/config');
 console.log(REDIS_PORT)
 const client = redis.createClient(6379);
 
-class cacheQuestions{
+class getcacheQuestions{
     async dailyCache(){
-        await client.connect();  
+        // await client.connect();  
         console.log('hi');
         const getSubjects =await subjectModel.find({})
         // console.log(getSubjects);
@@ -23,24 +23,14 @@ class cacheQuestions{
         }
     }
 
-    async addSubject(subject,question){
+    async getSubjectQuestion(subject){
         // await client.connect();  
-        await client.sadd(subject,JSON.stringify(question)); //adding new questions to cache
-        await client.expire(subject,3600);   
-        // let cachedQuestions = []
-            // cachedQuestions = await client.get(subject);
-            // if(cachedQuestions){
-            //     console.log(cachedQuestions);
-            //     const arr = [...cachedQuestions,JSON.stringify(question)];
-              
-            // }else{
-            //     let arr=[]
-            //     await client.set(subject,JSON.stringify(question)); //adding new questions to cache
-            //     await client.expire(subject,3600);
-            // }
-           
+        console.log('hi');
+            const cachedQuestions = await client.smembers(subject);
+            console.log(JSON.parse(cachedQuestions[1]));
+            return cachedQuestions;
     }
 }
 
-const cache = new cacheQuestions();
-module.exports = cache;
+const getcache = new getcacheQuestions();
+module.exports = getcache;
