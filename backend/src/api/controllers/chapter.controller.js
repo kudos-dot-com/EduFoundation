@@ -30,6 +30,14 @@ class chapter{
         return response(res,"","error while adding exams",403); 
        }
     }
+    async getChapter(req,res){
+    
+        const { subject } = req.params;
+        const question = await chapterService.getQuestionChapterwise(res,subject,req.query);
+        
+        return response(res,question,"fetched question successfully",403);        
+        
+      }
 }
 
 const chapterController = new chapter();

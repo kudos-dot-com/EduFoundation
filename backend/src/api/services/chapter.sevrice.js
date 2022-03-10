@@ -40,6 +40,24 @@ class chapterServices{
             return response(res,"","error while fetching subject",403); 
         }
         }
+        async getQuestionChapterwise(res,subject){
+            try{
+             
+             const getchapter = await chapterModel.find({subject});
+         
+             if(getchapter){
+               console.log(getchapter);
+               return getchapter
+             }
+            }
+            catch(err){
+             console.log(err);
+             return response(res, "", "error while fetching question", 403);
+             
+            }
+             
+             
+           }
 }
 const chapterService = new chapterServices();
 module.exports = {chapterService};
