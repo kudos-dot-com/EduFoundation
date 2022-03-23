@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Dashboard</title>
   </head>
   <body>
@@ -36,33 +37,62 @@
                         </h6>
 
                     <ul class="nav flex-column mb-2">
-                        
+
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                <span class="exam" id="jeem">JEE Mains</span>
-                            </a>
+                            <div class="nav-link">
+                                <div class="btn-group dropright">
+                                    <button type="button" id="phy" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Physics
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <button id="PhyC" class="dropdown-item" type="button">Chapter</button>
+                                        <button id="PhyQ" class="dropdown-item" type="button">Question</button>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                <span class="exam" id="jeea">JEE Advanced</h6>
-                            </a>
+                            <div class="nav-link">
+                                <div class="btn-group dropright">
+                                    <button type="button" id="chem" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Chemistry
+                                        </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <button id="ChemC" class="dropdown-item" type="button">Chapter</button>
+                                        <button id="ChemQ" class="dropdown-item" type="button">Question</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <div class="nav-link">
+                                <div class="btn-group dropright">
+                                    <button type="button" id="maths" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Maths
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <button id="MathsC" class="dropdown-item" type="button">Chapter</button>
+                                        <button id="MathsQ" class="dropdown-item" type="button">Question</button>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                <span class="exam" id="neet">NEET</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                <span class="exam" id="wbjee">WBJEE</span>
-                            </a>
+                            <div class="nav-link">
+                                <div class="btn-group dropright">
+                                    <button type="button" id="bio" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Biology
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <button id="BioC" class="dropdown-item" type="button">Chapter</button>
+                                        <button id="BioQ" class="dropdown-item" type="button">Question</button>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -76,13 +106,13 @@
                 <!-- <canvas class="my-4" id="myChart" width="900" height="380"></canvas> -->
 
                 <div class="btn-group">
-                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Subjects
+                    <button class="btn btn-success btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Exams
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button id="sub1" class="dropdown-item" type="button">Physics</button>
-                        <button id="sub2" class="dropdown-item" type="button">Chemistry</button>
-                        <button id="sub3" class="dropdown-item" type="button">Maths</button>
+                        <button id="xm1" class="dropdown-item" type="button">WBJEE</button>
+                        <button id="xm2" class="dropdown-item" type="button">JEE Mains</button>
+                        <button id="xm3" class="dropdown-item" type="button">NEET</button>
                     </div>
                 </div>
 
@@ -107,7 +137,12 @@
                 </div>
             </main>
         </div>
+
+        <div class="d-flex justify-content-center">
+            <button type="button" class="btn btn-warning btn-lg">Submit</button>
         </div>
+    </div>
+
     </body>
 
     <!-- Optional JavaScript -->

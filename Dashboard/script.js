@@ -1,10 +1,11 @@
 document.getElementById('jeem').addEventListener('click',() =>{
     var a = document.getElementById('jeem').textContent
     document.getElementById("dash").textContent=a
+    
     fetch("http://localhost:8080/api/chapter/add", {
     method: "POST",
     body: JSON.stringify({
-       name:"lawa",
+       name:"light",
        subject:"physics"
     }),
     headers: {
