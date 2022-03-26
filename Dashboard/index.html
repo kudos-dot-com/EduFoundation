@@ -13,7 +13,7 @@
   <body>
 
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">EduFoundation</a>
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/index.html">EduFoundation</a>
         <ul class="navbar-nav px-3">
           <li class="nav-item text-nowrap">
             <a class="nav-link" href="#">Sign In</a>
@@ -58,8 +58,8 @@
                                         Chemistry
                                         </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                        <button id="ChemC" class="dropdown-item" type="button">Chapter</button>
-                                        <button id="ChemQ" class="dropdown-item" type="button">Question</button>
+                                        <a href="Chemistry/Chapter/index.html"><button id="ChemC" class="dropdown-item" type="button">Chapter</button></a>
+                                        <a href="Chemistry/Question/index.html"><button id="ChemQ" class="dropdown-item" type="button">Question</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -68,16 +68,31 @@
                         <li class="nav-item">
                             <div class="nav-link">
                                 <div class="btn-group dropright">
-                                    <button type="button" id="mb" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <button type="button" id="math" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Maths
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                        <button id="MathBioC" class="dropdown-item" type="button">Chapter</button>
-                                        <button id="MathBioQ" class="dropdown-item" type="button">Question</button>
+                                        <a href="Maths/Chapter/index.html"><button id="MathC" class="dropdown-item" type="button">Chapter</button></a>
+                                        <a href="Maths/Question/index.html"><button id="MathQ" class="dropdown-item" type="button">Question</button></a>
                                     </div>
                                 </div>
                             </div>
                         </li>
+
+                        <li class="nav-item">
+                            <div class="nav-link">
+                                <div class="btn-group dropright">
+                                    <button type="button" id="bio" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Biology
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <a href="Biology/Chapter/index.html"><button id=BioC" class="dropdown-item" type="button">Chapter</button></a>
+                                        <a href="Biology/Question/index.html"><button id="BioQ" class="dropdown-item" type="button">Question</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
                     </ul>
                 </div>
             </nav>
@@ -118,10 +133,6 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
                 </div>
             </main>
-        </div>
-
-        <div class="d-flex justify-content-center">
-            <button type="button" class="btn btn-warning btn-lg">Submit</button>
         </div>
     </div>
 
