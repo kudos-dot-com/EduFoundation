@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/boxicons@2.1.1/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Dashboard</title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/index.html">EduFoundation</a>
+        <ul class="navbar-nav px-3">
+          <li class="nav-item text-nowrap">
+            <a class="nav-link" href="#">Sign In</a>
+          </li>
+        </ul>
+      </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+
+                        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                            <span>Exams</span>
+                            <a class="d-flex align-items-center text-muted" href="#">
+                                <box-icon name='list-plus'></box-icon>
+                            </a>
+                        </h6>
+
+                    <ul class="nav flex-column mb-2">
+
+                        <li class="nav-item">
+                            <div class="nav-link">
+                                <div class="btn-group dropright">
+                                    <button type="button" id="phy" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Physics
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <button id="PhyC" class="dropdown-item" type="button">Chapter</button></a>
+                                        <a href="/Physics/Question/index.html"><button id="PhyQ" class="dropdown-item" type="button">Question</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <div class="nav-link">
+                                <div class="btn-group dropright">
+                                    <button type="button" id="chem" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Chemistry
+                                        </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <button id="ChemC" class="dropdown-item" type="button">Chapter</button></a>
+                                        <a href="/Chemistry/Question/index.html"><button id="ChemQ" class="dropdown-item" type="button">Question</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <div class="nav-link">
+                                <div class="btn-group dropright">
+                                    <button type="button" id="math" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Maths
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <a href="Maths/Chapter/index.html"><button id="MathC" class="dropdown-item" type="button">Chapter</button></a>
+                                        <a href="Maths/Question/index.html"><button id="MathQ" class="dropdown-item" type="button">Question</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <div class="nav-link">
+                                <div class="btn-group dropright">
+                                    <button type="button" id="bio" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Biology
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                        <a href="Biology/Chapter/index.html"><button id=BioC" class="dropdown-item" type="button">Chapter</button></a>
+                                        <a href="Biology/Question/index.html"><button id="BioQ" class="dropdown-item" type="button">Question</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                    <h1 class="h2" id="dash">Dashboard</h1>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-success btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Exams
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <button id="wbjee" class="dropdown-item" type="button">WBJEE</button>
+                        <button id="jeem" class="dropdown-item" type="button">JEE Mains</button>
+                        <button id="neet" class="dropdown-item" type="button">NEET</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <br> <label for="exampleFormControlTextarea1"><h4>Topic: </h4></label>
+                    <textarea class="form-control" id="phytopic" rows="2"></textarea>
+                </div>
+            </main>
+        </div>
+
+        <div class="d-flex justify-content-center">
+            <button id="pchsubmit" type="button" class="btn btn-warning btn-lg">Submit</button>
+        </div>
+    </div>
+
+    </body>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+  
+</html>
