@@ -41,9 +41,11 @@ class chapterServices{
         }
         }
         async getQuestionChapterwise(res,subject){
+            // console.log(typeof(subject));
             try{
+            const getSubject = await subjectModel.findOne({name:subject});
              
-             const getchapter = await chapterModel.find({subject});
+            const getchapter = await chapterModel.find({subject:getSubject._id});
          
              if(getchapter){
                console.log(getchapter);
