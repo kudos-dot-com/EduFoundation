@@ -20,6 +20,6 @@ app.use('/api/exam',require('./api/routes/exam.routes'))
 
 
 // port
-app.listen(PORT,()=>{
+app.listen((PORT),()=>{
     console.log(`server starting at port ${PORT}`);
 });
