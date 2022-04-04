@@ -1,3 +1,23 @@
+window.onload = function(){
+    fetch("https://edu-foundation-kudos-dot-com.vercel.app/api/chapter/chapter/physics",{
+        method: "GET"
+    })
+
+    .then(response => response.json())
+    .then(json => {
+        topic=[];
+        topic=json.result
+        console.log(topic)
+
+        topic.map(e =>{
+
+            const node = document.createElement("div");
+            const textnode = document.createTextNode(e.name);
+            node.appendChild(textnode);
+            document.getElementById("PhyDrop").appendChild(node);
+        })
+    });
+};
 document.getElementById('jeem').addEventListener('click',() =>{
     
     var a = document.getElementById('jeem').textContent

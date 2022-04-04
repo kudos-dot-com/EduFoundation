@@ -17,3 +17,10 @@
     height: 31px;
     width: 95.47px;
 }
+
+#PhyDrop div{
+    padding: 5px 2px ;
+    font-size: 15px;
+    border-bottom: 1px solid #0004;
+    text-align: center;
+}
