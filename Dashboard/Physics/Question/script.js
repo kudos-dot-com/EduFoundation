@@ -11,10 +11,10 @@ window.onload = function(){
 
         topic.map(e =>{
 
-            const node = document.createElement("div");
+            const node = document.createElement("button");
             const textnode = document.createTextNode(e.name);
             node.appendChild(textnode);
-            document.getElementById("PhyDrop").appendChild(node);
+            document.getElementById("PhyDrop").appendChild(node).className="dropdown-item";
         })
     });
 };
