@@ -17,3 +17,9 @@
     height: 31px;
     width: 95.47px;
 }
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
