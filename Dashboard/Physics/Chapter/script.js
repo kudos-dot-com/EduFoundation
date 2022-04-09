@@ -1,3 +1,7 @@
+import api from '../../apiLink.js'
+
+console.log(api.get.apiPhy)
+
 document.getElementById("pchsubmit").addEventListener("click",()=>{
 
     var subject = window.location.pathname.split('/')[1].toLowerCase();
@@ -10,7 +14,7 @@ document.getElementById("pchsubmit").addEventListener("click",()=>{
     else
     {
         document.getElementById("pchsubmit").textContent="Posting..."
-        fetch("http://localhost:8080/api/chapter/add",{
+        fetch(api.post.apiPhyPost,{
             method: "POST",
             body: JSON.stringify({
                 name,
