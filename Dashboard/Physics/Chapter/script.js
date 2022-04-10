@@ -1,20 +1,16 @@
 import api from '../../apiLink.js'
 
-console.log(api.get.apiPhy)
-
 document.getElementById("pchsubmit").addEventListener("click",()=>{
 
-    var subject = window.location.pathname.split('/')[1].toLowerCase();
+    var subject = "physics"
     var name = document.getElementById("phytopic").value;
-
-    console.log(subject)
-    console.log(name)
+    
     if(name == "")
         alert("All Fields are Required")
     else
     {
         document.getElementById("pchsubmit").textContent="Posting..."
-        fetch(api.post.apiPhyPost,{
+        fetch(api.post.apiPost,{
             method: "POST",
             body: JSON.stringify({
                 name,

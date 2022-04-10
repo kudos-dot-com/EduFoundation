@@ -1,17 +1,17 @@
-document.getElementById('jeem').addEventListener('click',() =>{
+// document.getElementById('jeem').addEventListener('click',() =>{
     
-    var a = document.getElementById('jeem').textContent
-    document.getElementById("dash").textContent=a
-})
+//     var a = document.getElementById('jeem').textContent
+//     document.getElementById("dash").textContent=a
+// })
 
-document.getElementById('neet').addEventListener('click',() =>{
+// document.getElementById('neet').addEventListener('click',() =>{
     
-    var a = document.getElementById('neet').textContent
-    document.getElementById("dash").textContent=a
-})
+//     var a = document.getElementById('neet').textContent
+//     document.getElementById("dash").textContent=a
+// })
 
-document.getElementById('wbjee').addEventListener('click',() =>{
+// document.getElementById('wbjee').addEventListener('click',() =>{
     
-    var a = document.getElementById('wbjee').textContent
-    document.getElementById("dash").textContent=a
-})
+//     var a = document.getElementById('wbjee').textContent
+//     document.getElementById("dash").textContent=a
+// })
