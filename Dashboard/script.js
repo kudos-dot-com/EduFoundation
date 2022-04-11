@@ -1,17 +1,16 @@
-// document.getElementById('jeem').addEventListener('click',() =>{
-    
-//     var a = document.getElementById('jeem').textContent
-//     document.getElementById("dash").textContent=a
-// })
+import api from './apiLink.js'
 
-// document.getElementById('neet').addEventListener('click',() =>{
-    
-//     var a = document.getElementById('neet').textContent
-//     document.getElementById("dash").textContent=a
-// })
-
-// document.getElementById('wbjee').addEventListener('click',() =>{
-    
-//     var a = document.getElementById('wbjee').textContent
-//     document.getElementById("dash").textContent=a
-// })
+window.onload = function(){
+    Promise.all([
+        fetch(api.get.apiPhy).then(value => value.json()),
+        fetch(api.get.apiChem).then(value => value.json()),
+        fetch(api.get.apiMath).then(value => value.json()),
+        fetch(api.get.apiBio).then(value => value.json())
+        ])
+        .then(value => {
+            document.getElementById("phn").textContent = value[0].result.length;
+            document.getElementById("chemn").textContent = value[1].result.length;
+            document.getElementById("mathn").textContent = value[2].result.length;
+            document.getElementById("bion").textContent = value[3].result.length;
+        });
+    }

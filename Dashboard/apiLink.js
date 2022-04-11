@@ -5,7 +5,7 @@ const api = {
         "apiPhy" : "https://edu-foundation-kudos-dot-com.vercel.app/api/chapter/chapter/physics",
         "apiMath" : "https://edu-foundation-kudos-dot-com.vercel.app/api/chapter/chapter/mathematics",
         "apiBio" : "https://edu-foundation-kudos-dot-com.vercel.app/api/chapter/chapter/biology",
-        "apiChem" : "https://edu-foundation-kudos-dot-com.vercel.app/api/chapter/chapter/biology",
+        "apiChem" : "https://edu-foundation-kudos-dot-com.vercel.app/api/chapter/chapter/chemistry",
     },
     
     //POST

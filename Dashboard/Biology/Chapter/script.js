@@ -1,4 +1,4 @@
-import api from '../../apiLink'
+import api from '../../apiLink.js'
 
 document.getElementById("pchsubmit").addEventListener("click",()=>{
 
