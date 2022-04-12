@@ -13,7 +13,7 @@ class Question
     {
       try{
        // const result = await QuestionSchema.validateAsync(req.body);
-        console.log(result);
+        //console.log(result);
 
         // sanitizing the code
         const { chapter,subject,exam } = req.body;
