@@ -12,7 +12,7 @@ class Question
     async addQuestion(req,res)
     {
       try{
-        const result = await QuestionSchema.validateAsync(req.body);
+       // const result = await QuestionSchema.validateAsync(req.body);
         console.log(result);
 
         // sanitizing the code
@@ -28,18 +28,12 @@ class Question
         
         if(!getChapter){
           return response(res,"","chapter does not exists",403); 
-        }
-
-        const getExam = await examModel.findOne({name:exam});
-        
-        if(!getExam){
-          return response(res,"","exam does not exists",403); 
-        }
+        } 
 
         const question = await questionService.addQuestion(res,getSubject,getChapter,getExam,req.body);
         if(question)
         {   
-            await cache.addSubject(getSubject.name,question);
+     
             return response(res,question,"added question successfully",403);        
         }
       }
