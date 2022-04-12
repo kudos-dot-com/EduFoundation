@@ -1,19 +1,15 @@
-#phy{
+#phy, #chem, #math, #bio{
     height: 31px;
     width: 95.47px;
 }
 
-#chem{
+#phn, #chemn, #mathn, #bion {
     height: 31px;
     width: 95.47px;
 }
 
-#math{
-    height: 31px;
-    width: 95.47px;
-}
-
-#bio{
-    height: 31px;
-    width: 95.47px;
+.scrollable-menu {
+    height: auto;
+    max-height: 150px;
+    overflow-x: hidden;
 }

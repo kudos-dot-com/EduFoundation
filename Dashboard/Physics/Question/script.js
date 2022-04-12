@@ -19,3 +19,5 @@ window.onload = function(){
         })
     });
 };
+
+document.getElementById("dash").textContent="Physics Questions"

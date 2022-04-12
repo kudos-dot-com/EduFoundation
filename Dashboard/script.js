@@ -1,6 +1,10 @@
 import api from './apiLink.js'
 
 window.onload = function(){
+
+    let subn = ["phn", "chemn", "mathn", "bion"];
+    let chapn = ["PhyDrop", "ChemDrop", "MathDrop", "BioDrop"];
+
     Promise.all([
         fetch(api.get.apiPhy).then(value => value.json()),
         fetch(api.get.apiChem).then(value => value.json()),
@@ -8,9 +12,15 @@ window.onload = function(){
         fetch(api.get.apiBio).then(value => value.json())
         ])
         .then(value => {
-            document.getElementById("phn").textContent = value[0].result.length;
-            document.getElementById("chemn").textContent = value[1].result.length;
-            document.getElementById("mathn").textContent = value[2].result.length;
-            document.getElementById("bion").textContent = value[3].result.length;
+            for(var i=0;i<value.length;i++){
+                document.getElementById(subn[i]).textContent = value[i].result.length;
+
+                value[i].result.map(e =>{
+                    const node = document.createElement("button");
+                    const textnode = document.createTextNode(e.name);
+                    node.appendChild(textnode);
+                    document.getElementById(chapn[i]).appendChild(node).className="dropdown-item";
+                })
+            }
         });
     }

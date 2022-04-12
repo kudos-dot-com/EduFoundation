@@ -23,6 +23,7 @@ document.getElementById("pchsubmit").addEventListener("click",()=>{
             .then(response => response.json())
             .then(json => {
                 document.getElementById("pchsubmit").textContent="Submit"
+                document.getElementById("phytopic").value=""
                 console.log(json)
                 alert(json.message)});
         }
