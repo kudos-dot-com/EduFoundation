@@ -7,5 +7,5 @@
     option3:{ type: "string", required: true},
     option4:{ type: "string", required: true},
     correct_answer:{ type: "string", required: true},
-    hints:{ type: "string", required: false},
+    hints:{ type: "string", required: true},
     <!-- user:{type:ObjectId, required: false,ref:"users"}, -->

@@ -28,3 +28,5 @@ document.getElementById("pchsubmit").addEventListener("click",()=>{
                 alert(json.message)});
         }
 })
+
+document.getElementById("dash").textContent="Chemistry Chapters"

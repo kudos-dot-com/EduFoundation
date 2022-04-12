@@ -20,4 +20,4 @@ window.onload = function(){
     });
 };
 
-document.getElementById("dash").textContent="Physics Questions"
+document.getElementById("dash").textContent="Biology Questions"
