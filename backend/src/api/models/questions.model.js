@@ -11,7 +11,10 @@ const questionSchema=new mongoose.Schema({
     option3:{ type: "string", required: true},
     option4:{ type: "string", required: true},
     correct_answer:{ type: "string", required: true},
-    hints:{ type: "string", required: false},
+    hints1:{ type: "string", required: false},
+    hints2:{ type: "string", required: false},
+    difficulty:{ type: "string", required: false},
+    year:{ type: "string", required: false},
     user:{type:ObjectId, required: false,ref:"users"},
 },
 {timestamps:true}

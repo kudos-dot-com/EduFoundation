@@ -1,20 +1,20 @@
-const chapterModel = require('../models/chapter.model')
+const topicModel = require('../models/topic.model')
 const subjectModel = require('../models/subjects.model')
 const {response} = require('../helpers/response')
 const createCollection = require('../utils/createDbCollection');
 
-class chapterServices{
-    async checkChapter(res,{name,subject}){
+class topicServices{
+    async checktopic(res,{name,subject}){
     try{
         const getSubject = await subjectModel.findOne({name:subject});
         if(!getSubject){
             return response(res,"","subject does not exists",403); 
         }
-        const getChapter = await chapterModel.findOne({name,subject:getSubject._id});
+        const gettopic = await topicModel.findOne({name,subject:getSubject._id});
         
-        console.log(getChapter);
+        console.log(gettopic);
         
-        return getChapter;
+        return gettopic;
     }
     catch(err){
         console.log(err);
@@ -22,34 +22,34 @@ class chapterServices{
     }
     }
 
-    async addChapter(res,{name,subject}){
+    async addtopic(res,{name,subject}){
         try{
             const getSubject = await subjectModel.findOne({name:subject});
             console.log(getSubject);
-            const newChapter = new chapterModel({
+            const newtopic = new topicModel({
                 name,
                 subject:getSubject._id
             });
 
-            const createChapter = await newChapter.save();
+            const createtopic = await newtopic.save();
             
-            return createChapter;
+            return createtopic;
         }
         catch(err){
             console.log(err);
             return response(res,"","error while fetching subject",403); 
         }
         }
-        async getQuestionChapterwise(res,subject){
+        async getQuestiontopicwise(res,subject){
             // console.log(typeof(subject));
             try{
             const getSubject = await subjectModel.findOne({name:subject});
              
-            const getchapter = await chapterModel.find({subject:getSubject._id});
+            const gettopic = await topicModel.find({subject:getSubject._id});
          
-             if(getchapter){
-               console.log(getchapter);
-               return getchapter
+             if(gettopic){
+               console.log(gettopic);
+               return gettopic
              }
             }
             catch(err){
@@ -61,5 +61,5 @@ class chapterServices{
              
            }
 }
-const chapterService = new chapterServices();
-module.exports = {chapterService};
+const topicService = new topicServices();
+module.exports = {topicService};

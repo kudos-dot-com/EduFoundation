@@ -17,7 +17,7 @@ class Question
 
         // sanitizing the code
         const { chapter,subject,exam } = req.body;
-
+        console.log(req.body);
         const getSubject = await subjectModel.findOne({name:subject});
         
         if(!getSubject){

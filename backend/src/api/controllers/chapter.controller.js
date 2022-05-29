@@ -1,4 +1,4 @@
-const { chapterService } = require('../services/chapter.sevrice')
+const { chapterService } = require('../services/chapter.services')
 // validator
 const { ChapterSchema } =require('../validators/chapter.validator')
 const {response,incompleteField} = require('../helpers/response')
@@ -36,6 +36,14 @@ class chapter{
         const question = await chapterService.getQuestionChapterwise(res,subject,req.query);
         
         return response(res,question,"fetched question successfully",403);        
+        
+      }
+      async getChapterTopicwise(req,res){
+    
+        const { subject } = req.params;
+        const question = await chapterService.getChapterTopicwise(res,subject,req.query);
+        
+        return response(res,question,"fetched topicwise chapters successfully",403);        
         
       }
 }
