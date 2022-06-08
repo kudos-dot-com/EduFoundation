@@ -84,7 +84,7 @@ class chapterServices{
                    
                    })
                    console.log(result)
-                   obj['chapters'] = result
+                   obj['chapters'] = result.name
 
                    data.push(obj);
 
