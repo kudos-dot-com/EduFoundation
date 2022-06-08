@@ -78,13 +78,17 @@ class chapterServices{
                    let obj={}
                    obj['topic'] = topics.name;
                    console.log(topics)
-                   let result = getchapter.filter((dets,idx)=>{
+
+                   let result = [] 
+                   getchapter.map((dets,idx)=>{
                   
-                         return (dets.topic && ((dets.topic._id).toString() === (topics._id).toString()))   
-                   
+                         if(dets.topic && ((dets.topic._id).toString() === (topics._id).toString()))   
+                        {
+                            result.push(dets.name)
+                        }
                    })
                    console.log(result)
-                   obj['chapters'] = result.name
+                   obj['chapters'] = result
 
                    data.push(obj);
 
