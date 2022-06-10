@@ -1,6 +1,7 @@
 const questionModel = require("../models/questions.model");
 const chapterModel = require('../models/chapter.model')
 const subjectModel = require('../models/subjects.model')
+const topicModel = require('../models/topic.model')
 const examModel = require('../models/exams.models')
 const {response,incompleteField} = require('../helpers/response')
 

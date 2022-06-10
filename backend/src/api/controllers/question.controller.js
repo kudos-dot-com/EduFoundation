@@ -4,7 +4,7 @@ const {response,incompleteField} = require('../helpers/response')
 const examModel = require('../models/exams.models')
 const chapterModel = require('../models/chapter.model')
 const subjectModel = require('../models/subjects.model')
-const topicModel = require('../models/topics.model')
+const topicModel = require('../models/topic.model')
 const cache = require('../redis/cacheQuestion')
 const getcache = require('../redis/getcachedQuestion')
 
