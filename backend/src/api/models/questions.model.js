@@ -3,6 +3,7 @@ const {ObjectId} = mongoose.Schema.Types;
 const questionSchema=new mongoose.Schema({
     question:{ type: "string", required: true},
     chapter:{ type: ObjectId, required: true,ref:"chapters"},
+    topic:{ type: ObjectId, required: true,ref:"topics"},
     subject:{ type: ObjectId, required: true,ref:"subjects"},
     // question_type:{ type: ObjectId, required: true,ref:"questionTypes"},
     exam:{ type: ObjectId, required: false,ref:"exams"},

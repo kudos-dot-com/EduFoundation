@@ -8,7 +8,7 @@ class QuestionService {
   async checkUser(user) {
     return user.user_type == "teacher" || user.user_type == "admin";
   }
-  async addQuestion(res,getSubject,getChapter,getExam,fields) {
+  async addQuestion(res,getSubject,getChapter,getTopic,fields) {
     try{
       const { chapter,subject,exam } = fields;
       var arr = [""] 
@@ -16,7 +16,7 @@ class QuestionService {
         ...fields,
         subject:getSubject._id,
         chapter:getChapter._id,
-        exam:getExam._id,
+        topic:getTopic._id,
       })
       const question = await newquestion.save();
       return question;
@@ -52,9 +52,7 @@ class QuestionService {
     console.log(err);
     return response(res, "", "error while fetching question", 403);
     
-   }
-    
-    
+   }    
   }
   async getQuestionExamwise(res,exam,{sample}){
     try{
@@ -79,6 +77,34 @@ class QuestionService {
     }
      
      
+  }
+  async getQuestionTopicwise(res,subject,topic,level,{page,limit}){
+    try{
+     page = parseInt(page);
+     limit= parseInt(limit);
+ 
+     const curr = limit*(page-1); 
+     const gettopic = await topicModel.find({name:topic});
+     const getsubject = await subjectModel.find({name:subject});
+     console.log(getsubject,getchapter)
+     const aggr  = [{
+       $match:{topic:gettopic[0]._id,subject:getsubject[0]._id,difficulty:level},
+       },
+       {$skip:curr},
+       {$limit:limit}
+     ];
+     const questions = await questionModel.aggregate(aggr)
+ 
+     if(questions){
+       console.log(questions);
+       return questions
+     }
+    }
+    catch(err){
+     console.log(err);
+     return response(res, "", "error while fetching question", 403);
+     
+    }    
    }
 }
 

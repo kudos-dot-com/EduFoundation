@@ -4,6 +4,7 @@ const {response,incompleteField} = require('../helpers/response')
 const examModel = require('../models/exams.models')
 const chapterModel = require('../models/chapter.model')
 const subjectModel = require('../models/subjects.model')
+const topicModel = require('../models/topics.model')
 const cache = require('../redis/cacheQuestion')
 const getcache = require('../redis/getcachedQuestion')
 
@@ -16,7 +17,7 @@ class Question
         //console.log(result);
 
         // sanitizing the code
-        const { chapter,subject,exam } = req.body;
+        const { chapter,subject,exam,topic } = req.body;
         console.log(req.body);
         const getSubject = await subjectModel.findOne({name:subject});
         
@@ -30,7 +31,13 @@ class Question
           return response(res,"","chapter does not exists",403); 
         } 
 
-        const question = await questionService.addQuestion(res,getSubject,getChapter,"",req.body);
+        const getTopic = await topicModel.findOne({name:topic,subject:getSubject._id});
+
+        if(!getChapter){
+          return response(res,"","chapter does not exists",403); 
+        } 
+
+        const question = await questionService.addQuestion(res,getSubject,getChapter,getTopic,"",req.body);
         if(question)
         {   
      
@@ -45,7 +52,8 @@ class Question
         
         
     }
-    async getQuestion(req,res){
+    //not needed
+      async getQuestion(req,res){
     
       const {subject} = req.params;
       const getCache =  await getcache.getSubjectQuestion(subject);
@@ -67,6 +75,16 @@ class Question
       return response(res,question,"fetched question successfully",403);        
       
     }
+
+    async getQuestionTopicwise(req,res){
+      const {subject,topic,level} = req.params;
+      const question = await questionService.getQuestionTopicwise(res,subject,topic,level,req.query);
+      
+      return response(res,question,"fetched question successfully",200);        
+    
+        
+    }
+    
     
 }
 
