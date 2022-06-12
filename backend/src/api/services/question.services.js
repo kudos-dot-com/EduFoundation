@@ -87,7 +87,7 @@ class QuestionService {
      const curr = limit*(page-1); 
      const gettopic = await topicModel.find({name:topic});
      const getsubject = await subjectModel.find({name:subject});
-     console.log(getsubject,getchapter)
+    //  console.log(getsubject,getchapter)
      const aggr  = [{
        $match:{topic:gettopic[0]._id,subject:getsubject[0]._id,difficulty:level},
        },
