@@ -37,7 +37,7 @@ class Question
           return response(res,"","chapter does not exists",403); 
         } 
 
-        const question = await questionService.addQuestion(res,getSubject,getChapter,getTopic,"",req.body);
+        const question = await questionService.addQuestion(res,getSubject,getChapter,getTopic,req.body);
         if(question)
         {   
      

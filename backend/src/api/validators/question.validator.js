@@ -8,7 +8,7 @@ const QuestionSchema = Joi.object({
     option2:Joi.string().min(1).max(300).required(),
     option3:Joi.string().min(1).max(300).required(),
     option4:Joi.string().min(1).max(300).required(),
-    correct_answer: Joi.string().min(3).max(30).required(),
+    correct_answer: Joi.array().required(),
     hints: Joi.string().min(3).max(30),
     // user: Joi.string().min(3).max(30).required(),
 
