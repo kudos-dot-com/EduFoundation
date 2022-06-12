@@ -1,7 +1,8 @@
 const mongoose=require('mongoose');
 const {ObjectId} = mongoose.Schema.Types;
 const questionSchema=new mongoose.Schema({
-    question:{ type: "string", required: true},
+    question:{ type: "string", required: false,default:""},
+    questionImage:{ type: "string", required: false,default:""},
     chapter:{ type: ObjectId, required: true,ref:"chapters"},
     topic:{ type: ObjectId, required: true,ref:"topics"},
     subject:{ type: ObjectId, required: true,ref:"subjects"},
