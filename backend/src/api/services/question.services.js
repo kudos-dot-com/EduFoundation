@@ -83,7 +83,8 @@ class QuestionService {
     try{
      page = parseInt(page);
      limit= parseInt(limit);
- 
+  //  {$skip:curr},
+      //  {$limit:limit}
      const curr = limit*(page-1); 
      const gettopic = await topicModel.find({name:topic});
      const getsubject = await subjectModel.find({name:subject});
@@ -91,9 +92,8 @@ class QuestionService {
      const aggr  = [{
        $match:{topic:gettopic[0]._id,subject:getsubject[0]._id,difficulty:level},
        },
-       {$sample:limit}
-      //  {$skip:curr},
-      //  {$limit:limit}
+       {$sample:{size:limit}}
+     
      ];
      const questions = await questionModel.aggregate(aggr)
  
