@@ -91,8 +91,9 @@ class QuestionService {
      const aggr  = [{
        $match:{topic:gettopic[0]._id,subject:getsubject[0]._id,difficulty:level},
        },
-       {$skip:curr},
-       {$limit:limit}
+       {$sample:limit}
+      //  {$skip:curr},
+      //  {$limit:limit}
      ];
      const questions = await questionModel.aggregate(aggr)
  
