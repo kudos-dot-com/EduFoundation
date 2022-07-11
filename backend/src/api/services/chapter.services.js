@@ -1,4 +1,5 @@
 const chapterModel = require('../models/chapter.model')
+const questionModel = require("../models/questions.model");
 const subjectModel = require('../models/subjects.model')
 const topicModel = require('../models/topic.model')
 const {response} = require('../helpers/response')
@@ -75,24 +76,27 @@ class chapterServices{
                for(let i in gettopic)
                {
                    let topics=gettopic[i]
-                   let obj={}
-                   obj['topic'] = topics.name;
+                   let obj={...topics._doc}
                    console.log(topics)
-
+                   const aggr = [{$match:{topic:topics._id}},{$count:'data'}]
+                var count =await questionModel.aggregate(aggr);
+                obj['count'] =count.length>0?count[0].data:0; 
+                
+                console.log(count);  
                    let result = [] 
-                   getchapter.map((dets,idx)=>{
+                //    getchapter.map((dets,idx)=>{
                   
-                         if(dets.topic && ((dets.topic._id).toString() === (topics._id).toString()))   
-                        {
-                            result.push(dets.name)
-                        }
-                   })
-                   console.log(result)
-                   obj['chapters'] = result
-
+                //          if(dets.topic && ((dets.topic._id).toString() === (topics._id).toString()))   
+                //         {
+                //             result.push(dets.name)
+                //         }
+                //    })
+                //    console.log(result)
+                   obj['chapters'] = result.length
                    data.push(obj);
 
                }
+               console.log(data)
                return data;
              }
             }

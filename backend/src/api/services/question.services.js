@@ -4,6 +4,8 @@ const subjectModel = require('../models/subjects.model')
 const topicModel = require('../models/topic.model')
 const examModel = require('../models/exams.models')
 const {response,incompleteField} = require('../helpers/response')
+const { v4: uuidv4 } = require('uuid');
+const mongoose = require('mongoose');
 
 class QuestionService {
   async checkUser(user) {
@@ -27,6 +29,32 @@ class QuestionService {
       return response(res, "", "error while registering new question", 403);
     }
   }
+  async getQuestionSubjectwise(res,subject,{page,limit}){
+    try{
+     page = parseInt(page);
+     limit= parseInt(limit);
+ 
+     const curr = limit*(page-1); 
+     const getsubject = await subjectModel.find({name:subject});
+     const aggr  = [{
+       $match:{subject:getsubject[0]._id},
+       },
+       {$skip:curr},
+       {$limit:limit}
+     ];
+     const questions = await questionModel.aggregate(aggr)
+ 
+     if(questions){
+       console.log(questions);
+       return questions
+     }
+    }
+    catch(err){
+     console.log(err);
+     return response(res, "", "error while fetching question", 500);
+     
+    }    
+   }
   async getQuestionChapterwise(res,subject,chapter,{page,limit}){
    try{
     page = parseInt(page);
@@ -79,16 +107,11 @@ class QuestionService {
      
      
   }
-  async getQuestionTopicwise(res,subject,topic,level,{page,limit}){
+  async getQuestionRandomTopicwise(res,subject,topic,level,{limit}){
     try{
-     page = parseInt(page);
      limit= parseInt(limit);
-  //  {$skip:curr},
-      //  {$limit:limit}
-     const curr = limit*(page-1); 
      const gettopic = await topicModel.find({name:topic});
      const getsubject = await subjectModel.find({name:subject});
-    //  console.log(getsubject,getchapter)
      const aggr  = [{
        $match:{topic:gettopic[0]._id,subject:getsubject[0]._id,difficulty:level},
        },
@@ -104,10 +127,100 @@ class QuestionService {
     }
     catch(err){
      console.log(err);
-     return response(res, "", "error while fetching question", 403);
+     return response(res, "", "error while fetching question", 500);
      
     }    
    }
+  async getQuestionTopicwise(res,subject,topic,level,{page,limit}){
+    try{
+     page = parseInt(page);
+     limit= parseInt(limit);
+  
+     const curr = limit*(page-1); 
+     const gettopic = await topicModel.find({name:topic});
+     const getsubject = await subjectModel.find({name:subject});
+    //  console.log(getsubject,getchapter)
+     const aggr  = [{
+       $match:{topic:gettopic[0]._id,subject:getsubject[0]._id,difficulty:level},
+       },
+       {$skip:curr},
+       {$limit:limit}     
+     ];
+     const questions = await questionModel.aggregate(aggr)
+ 
+     if(questions){
+       console.log(questions);
+       return questions
+     }
+    }
+    catch(err){
+     console.log(err);
+     return response(res, "", "error while fetching question", 500);
+     
+    }    
+   }
+  async addJsonDetails(json,subject,chapter,res){
+    const getSubject = await subjectModel.findOne({ name: subject });
+
+    if (!getSubject) {
+      return response(res, "", "subject does not exists", 403);
+    }
+
+    // const getChapter = await chapterModel.findOne({
+    //   name: chapter,
+    //   subject: getSubject._id,
+    // });
+
+    
+    const getTopic = await topicModel.findOne({
+      name:chapter,
+      subject: getSubject._id,
+    });
+
+    if (!getTopic) {
+      return response(res, "", "chapter does not exists", 403);
+    }
+    json['topic'] = getTopic._id
+    json['subject'] = getSubject._id
+    var answer = [json['correct_answer']]
+    json['correct_answer'] = answer;
+    delete json.chapter;
+
+    return json;
+    
+
+    // if (!getChapter) {
+    //   return response(res, "", "chapter does not exists", 403);
+    // }
+
+  }
+async formatJson(json,subject,res){
+  console.log(json,subject)
+  var query = []
+  for(var i in json){
+    var data = json[i]
+    var temp =await this.addJsonDetails(data,subject,data.chapter,res)
+    json[i] = temp
+    console.log(temp)
+    query.push({
+      updateOne:{ 
+        "filter":{question:temp.question},
+        "update":{$set:temp},
+        upsert:true
+        
+      }
+    })
+  }
+
+  const questions = await questionModel.bulkWrite(query,{ordered:false})
+  console.log(questions);
+
+  if(!questions){
+    return response(res, "", "something went wrong", 500);
+  }
+  return response(res, "", "questions added successfully", 200);
+}
+
 }
 
 const questionService = new QuestionService();

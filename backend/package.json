@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engine":{
-    "node":"14.x"
+  "engine": {
+    "node": "14.x"
   },
   "scripts": {
     "start": "nodemon index.js"
@@ -19,11 +19,16 @@
     "cors": "^2.8.5",
     "dotenv": "^15.0.0",
     "express": "^4.17.2",
+    "express-fileupload": "^1.4.0",
+    "ioredis": "^5.2.0",
     "joi": "^17.6.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.9",
+    "multer": "^1.4.5-lts.1",
     "node-fetch": "^3.2.2",
-    "redis": "^4.0.4"
+    "redis": "^4.2.0",
+    "uuid": "^8.3.2",
+    "xlsx-to-json-lc": "^0.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
