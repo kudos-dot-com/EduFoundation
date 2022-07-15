@@ -17,7 +17,7 @@ const { response, incompleteField } = require("../helpers/response");
             return upload;
         }
         catch(err){
-      return response(res, "", "something went wrong while uploading ", 500);
+      return response(res, "", "something went wrong while uploading ", 401);
 
         }
 }
