@@ -148,10 +148,23 @@ class Question {
         }
       );
     } catch (e) {
-      return res.json({ error_code: 1, err_desc: err, data: null });
+      return response(res, "", "something went wrong while uploading ", 500);
+
     }
   }
-  
+  async deleteQuestion(req, res, next) {
+    try {
+      const question = await questionService.deleteQuestions(req.params.id);
+      if(!question){
+        return response(res, "", "something went wrong while uploading ", 500);
+      }       
+      return response(res, "", "questions deleted successfully", 200);
+
+    } catch (e) {
+      return response(res, "", "something went wrong while uploading ", 500);
+
+    }
+  }
 }
 
 const questionController = new Question();

@@ -42,8 +42,10 @@ class QuestionService {
        {$skip:curr},
        {$limit:limit}
      ];
-     const questions = await questionModel.aggregate(aggr)
- 
+     const questions = await questionModel.aggregate(aggr);
+     await topicModel.populate(questions,{
+      path:'topic'
+     })
      if(questions){
        console.log(questions);
        return questions
@@ -217,7 +219,10 @@ async formatJson(json,subject,res){
   return questions;
   
 }
-
+async deleteQuestions(id){
+  const question =await questionModel.deleteOne({_id:id})
+  return question;
+}
 }
 
 const questionService = new QuestionService();

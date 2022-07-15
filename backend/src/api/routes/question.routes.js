@@ -12,6 +12,7 @@ router.get('/getchapter/:subject/:chapter',questionController.getQuestionChapter
 router.get('/getexam/:exam',questionController.getQuestionExamwise);
 router.get('/gettopic/:subject/:topic/:level',questionController.getQuestionTopicwise);
 router.get('/gettopic/random/:subject/:topic/:level',questionController.getQuestionRandomTopicwise);
+router.delete('/delete/:id',questionController.deleteQuestion);
 
 
 // router.post('/login',authController.login);
