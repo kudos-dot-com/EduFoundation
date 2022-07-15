@@ -125,8 +125,6 @@ class Question {
   }
   async bulkUpload(req, res, next) {
     try {
-      return response(res, "", "questions added successfully", 200);
-      
       // const file = req.files.file;
       // console.log(req.file);
       xlsxtojson(
