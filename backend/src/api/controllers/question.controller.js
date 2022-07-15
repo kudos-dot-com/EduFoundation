@@ -8,6 +8,10 @@ const topicModel = require("../models/topic.model");
 const cache = require("../redis/cacheQuestion");
 const getcache = require("../redis/getcachedQuestion");
 var xlsxtojson = require("xlsx-to-json-lc");
+const fs = require('fs')
+const { promisify } = require('util')
+
+const unlinkAsync = promisify(fs.unlink)
 
 class Question {
   async addQuestion(req, res) {
@@ -134,7 +138,13 @@ class Question {
             return response(res, "", "something went wrong", 500);
           }
           console.log(result);
-          await questionService.formatJson(result, req.body.subject, res);
+          const questions = await questionService.formatJson(result, req.body.subject, res);
+
+          if(!questions){
+            return response(res, "", "something went wrong", 500);
+          }
+          await unlinkAsync(req.file.path)
+          return response(res, "", "questions added successfully", 200);
         }
       );
     } catch (e) {

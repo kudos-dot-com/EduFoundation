@@ -214,11 +214,8 @@ async formatJson(json,subject,res){
 
   const questions = await questionModel.bulkWrite(query,{ordered:false})
   console.log(questions);
-
-  if(!questions){
-    return response(res, "", "something went wrong", 500);
-  }
-  return response(res, "", "questions added successfully", 200);
+  return questions;
+  
 }
 
 }

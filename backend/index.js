@@ -2,23 +2,14 @@ const express = require('express');
 const app=express();
 const {PORT}= require('./src/config/config');
 const DbConnect =require('./src/config/database')
-const cache = require('./src/api/redis/cacheQuestion')
+// const cache = require('./src/api/redis/cacheQuestion')
 const bodyParser = require('body-parser');
 var multer = require('multer');
 const cors=require('cors');
-// const client = require('./src/api/redis/configure')
-// const redis = require("redis");
-              
 
-
-// const Redis = require("ioredis");
-
-//     let client = new Redis("rediss://:6a5de6b3cc3348deb0af0ce994d884b8@global-prompt-monster-30728.upstash.io:30728");
-//     client.set('foo', 'bar');
 app.use(cors())
-// app.use(require('express').json());
-app.use(bodyParser.urlencoded({extended:true}))
-app.use(bodyParser.json());
+app.use(require('express').json());
+
 
 
 // db connection

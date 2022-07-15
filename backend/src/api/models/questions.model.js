@@ -16,7 +16,7 @@ const questionSchema=new mongoose.Schema({
     option2Image:{ type: "string", required: false,default:""},
     option3Image:{ type: "string", required: false,default:""},
     option4Image:{ type: "string", required: false,default:""},
-    correct_answer:{ type: "string", required: true},
+    correct_answer:{ type: "array", required: true},
     hints1:{ type: "string", required: false},
     hints2:{ type: "string", required: false},
     difficulty:{ type: "string", required: false},
